@@ -1,0 +1,129 @@
+.hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    overflow: hidden;
+  
+    &__content {
+      position: relative;
+      z-index: 1;
+      text-align: start;
+      color: #ffffff;
+      padding:0px 0px 0px 30px;
+    }
+  
+    &__title {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+  
+    &__subtitle {
+      font-size: 1rem;
+      margin-bottom: 2rem;
+    }
+  
+    &__cta {
+      background-color: #ffffff;
+      color:#4a90e2;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 4px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+  
+      &:hover {
+        background-color: #f0f0f0;
+      }
+    }
+  
+    &__image-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+  
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+    }
+  
+    &__image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  
+  // Responsive breakpoints
+  @media (min-width: 576px) {
+    .hero {
+      &__title {
+        font-size: 2.5rem;
+      }
+  
+      &__subtitle {
+        font-size: 1.25rem;
+      }
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .hero {
+      &__title {
+        font-size: 40px;
+      }
+  
+      &__subtitle {
+        font-size: 20px;
+      }
+  
+      &__cta {
+        padding:0.7rem 1rem;
+        font-size:14px;
+      }
+     
+    }
+  }
+  
+  @media (min-width: 992px) {
+    .hero {
+      &__title {
+        font-size: 3.0rem;
+      }
+  
+      &__subtitle {
+        font-size: 1.3rem;
+      }
+      &__content {
+      
+        padding:0px 0px 0px 80px;
+      }
+    }
+  }
+  
+  @media (min-width: 1200px) {
+    .hero {
+      &__title {
+        font-size: 4rem;
+      }
+  
+      &__subtitle {
+        font-size: 2rem;
+      }
+    }
+  }
+  
+  
