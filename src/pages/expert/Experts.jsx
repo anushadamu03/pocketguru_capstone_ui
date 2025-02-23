@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Card from "../../components/card/Card.jsx";
 import expert_img from "../../assets/images/student-image.jpg";
-import "../../pages/expert/expert.scss"
+import "../../pages/expert/expert.scss";
 import { useNavigate } from "react-router-dom";
+import { Filter } from 'lucide-react';
+
 
 // const EXPERTS = [
 //   {
@@ -55,42 +57,104 @@ import { useNavigate } from "react-router-dom";
 // ];
 
 const Experts = () => {
-
+  const [filterText, setFilterText] = useState("");
   const navigate = useNavigate();
 
-    const [experts_users, setUsers] = useState([]);
-          const fetchUsers = async (role) => {
-            try {
-              const url =  `http://localhost:5000/all-users?role=${role}` ;
-              const response = await fetch(url);
-              if (!response.ok) {
-                throw new Error('Failed to fetch users');
-              }
-              const data = await response.json();
-              setUsers(data.users);
-            } catch (error) {
-              console.error('Error fetching users:', error.message);
-            }
-          };
-  
-          useEffect(()=>{
-            fetchUsers('Mentor')
-          },[])
 
-          // console.log("experts_users====",experts_users)
+  const [experts_users, setUsers] = useState([]);
+  const fetchUsers = async (role) => {
+    try {
+      const url = `http://localhost:5000/all-users?role=${role}`;
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error("Failed to fetch users");
+      }
+      const data = await response.json();
+      setUsers(data.users);
+    } catch (error) {
+      console.error("Error fetching users:", error.message);
+    }
+  };
+
+  const filteredExperts = experts_users.filter((expert) =>
+    expert.name.toLowerCase().includes(filterText.toLowerCase())
+  );
+
+  useEffect(() => {
+    fetchUsers("Mentor");
+  }, []);
 
   return (
-    <div className="expert_card_container">
-      {experts_users.map((expert, index) => (
-        <Card
-          check={"expert"}
-          key={index}
-          title={expert.name}
-          description={expert.expertise}
-          image={expert_img}
-          onClick={() =>navigate(`/chat/${index}`, { state: { expert,expert_img } })}
+    <div className="experts">
+      <div className="filter-container">
+        <input
+          type="text"
+          placeholder="Filter by name"
+          value={filterText}
+          onChange={(e) => setFilterText(e.target.value)}
+          className="filter-input"
         />
-      ))}
+        <button className="filter-button">Search</button>
+      </div>
+      <div className="card-filtertags-container">
+      <div className="filter-tags">
+        <div  style={{display: "flex",justifyContent: "space-between"}}>
+        <h4>Filter </h4><div > <Filter /></div>
+        </div>
+       
+        <div>
+        <p>MernStack</p>
+        <p>full-Stack </p>
+        </div>
+       <div>
+       <p>Python </p>
+       <p>Java</p>
+       </div>
+
+       <div>
+       <p>Node.js </p>
+       <p>React</p>
+       </div>
+       
+        <div>
+       <p>Go</p>
+       <p>C++</p>
+       </div>
+    
+       
+     
+       
+        <div>
+       <p>TypeScript</p>
+       <p>Elm</p>
+       </div>
+       
+        <div>
+       <p>SQL</p>
+       <p>NoSQL</p>
+       </div>
+       
+      
+       
+
+
+      </div>
+      <div className="expert_card_container">
+        {filteredExperts.map((expert, index) => (
+          <Card
+            check={"expert"}
+            key={index}
+            title={expert.name}
+            description={expert.expertise}
+            image={expert_img}
+            onClick={() =>
+              navigate(`/chat/${index}`, { state: { expert, expert_img } })
+            }
+          />
+        ))}
+      </div>
+      </div>
+    
     </div>
   );
 };

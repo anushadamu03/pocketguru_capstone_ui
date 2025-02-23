@@ -60,7 +60,19 @@ import { useNavigate } from "react-router-dom";
 const Students = () => {
   const navigate = useNavigate();
 
+  const [authUserId, setauthWebUserId] = useState('');
+  const getToken = () => {
+   const auth_webId = localStorage.getItem('web_userId');
+   setauthWebUserId(auth_webId)
+ };
+
+  useEffect(()=>{
+       getToken();
+     },[])
+
        const [student_users, setUsers] = useState([]);
+       const [filterText, setFilterText] = useState("");
+
         const fetchUsers = async (role) => {
           try {
             const url =  `http://localhost:5000/all-users?role=${role}` ;
@@ -69,32 +81,50 @@ const Students = () => {
               throw new Error('Failed to fetch users');
             }
             const data = await response.json();
-            setUsers(data.users);
+            const allStudentsData = data?.users?.filter(item => item.id !== authUserId);
+            setUsers(allStudentsData);
           } catch (error) {
             console.error('Error fetching users:', error.message);
           }
         };
+        
+        const filteredStudents = student_users.filter((expert) =>
+          expert.name.toLowerCase().includes(filterText.toLowerCase())
+        );
+      
 
         useEffect(()=>{
           fetchUsers('Student')
-        },[])
+        },[authUserId])
 
        
 
   return (
-    <div className="expert_card_container">
-      {student_users.map((student, index) => (
+    <div className="experts">
+         <div className="filter-container">
+        <input
+          type="text"
+          placeholder="Filter by name"
+          value={filterText}
+          onChange={(e) => setFilterText(e.target.value)}
+          className="filter-input"
+        />
+        <button className="filter-button">Search</button>
+      </div>
+       <div className="expert_card_container">
+      {filteredStudents.map((student, index) => (
         <Card
           key={student.id}
           title={student.name}
           course={student.bio}
-          // description={`Age: ${student.age}`}
           image={student_img}
           // onClick={() => console.log(`Clicked on ${student.name}`)}
           onClick={() =>navigate(`/chat/${index}`, { state: { expert : student ,expert_img: student_img } })}
         />
       ))}
     </div>
+    </div>
+   
   );
 };
 

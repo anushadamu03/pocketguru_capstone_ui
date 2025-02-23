@@ -1,5 +1,7 @@
 import React from "react";
 import "./Card.scss";
+import { Star } from 'lucide-react';
+
 
 const Card = ({ title, description, image, onClick, course,check }) => {
   return (
@@ -12,12 +14,27 @@ const Card = ({ title, description, image, onClick, course,check }) => {
         <div className="card__course">{course}</div>
         }
         <p className="card__description">{description}</p>
+        <div className="card__star">
+         
+        {check==="expert" ?  
+        <>
+         <Star fill="yellow" />
+        <Star fill="yellow" />
+        <Star fill="yellow" />
+        <Star  />
+        <Star />
+        </>
+        
+          : ""
+          }
+      
+        </div>
       
         {check==="expert" ? <button className="card__button" onClick={onClick}>
             Chat
           </button>
           : <button className="card__button" onClick={onClick}>
-            Explore More
+            Let's Chat
           </button>
           }
       </div>

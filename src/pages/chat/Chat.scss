@@ -1,6 +1,6 @@
 .chat-container {
     width: 400px;
-    height: 500px;
+    height: 580px;
     display: flex;
   
     flex-direction: column;
@@ -88,7 +88,7 @@
   }
 
   .chating-box{
-    padding: 100px;
+    padding: 50px 30px 10px 50px;
     background: #fff;
     border-radius: 10px;
     margin-top: 10px;
@@ -98,6 +98,10 @@
     justify-content: center;
     font-size: 18px;
     cursor: pointer;
+  }
+  .chat-experts-specalization{
+    display: flex;
+    gap: 10px;
   }
   
 
@@ -142,9 +146,10 @@
     .expert-details {
       font-size: 16px;
       color: #555;
+      font-weight: 700;
       margin: 70px 40;
       span {
-        font-weight: bold;
+        font-weight: 500;
         color: #403d3d;
        
       }
@@ -159,6 +164,21 @@
       align-items: center;
       justify-content: center;
     
+    }
+    .expert-details {
+      font-size: 15px;
+      color: #555;
+      font-weight: 700;
+      margin: 90px 40;
+      span {
+        font-weight: 500;
+        color: #403d3d;
+       
+      }
+    }
+    .chat-experts-specalization{
+      display: flex;
+      gap: 0px;
     }
     
   }

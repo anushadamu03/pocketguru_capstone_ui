@@ -5,17 +5,14 @@ const ChatComponent = ({ messages, currentUserId }) => {
   const chatContainerRef = useRef(null);
   const [chatMessages, setChatMessages] = useState(messages);
 
-  // Auto-scroll to the latest message
   useEffect(() => {
     chatContainerRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [chatMessages]);
 
   return (
     <div className="chat-container">
-      {/* Header */}
       <div className="chat-header">Chat App</div>
 
-      {/* Messages Container */}
       <div className="chat-messages">
         {chatMessages.map((msg) => (
           <div
@@ -38,11 +35,9 @@ const ChatComponent = ({ messages, currentUserId }) => {
             {msg.senderId === currentUserId && <div className="icon">S</div>}
           </div>
         ))}
-        {/* Dummy div for auto-scroll */}
         <div ref={chatContainerRef}></div>
       </div>
 
-      {/* Chat Input Box */}
       <div className="chat-input-container">
         <input type="text" placeholder="Type a message..." className="chat-input" />
         <button className="chat-send-btn">Send</button>

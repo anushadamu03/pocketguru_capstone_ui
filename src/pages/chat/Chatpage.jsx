@@ -109,10 +109,14 @@ const ChatPage = () => {
         <h2 className="expert-name">
           Chat with: <span>{expert.name}</span>
         </h2>
+        <div className="chat-experts-specalization">
         <p className="expert-details">
           Expertise: <span>{expert.title}</span>
         </p>
         <div className="expert-details">{expert.expertise}</div>
+    
+        </div>
+     
       </div>
 
       <div className="chat-container">

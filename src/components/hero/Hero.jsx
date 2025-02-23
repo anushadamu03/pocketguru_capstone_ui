@@ -1,22 +1,4 @@
-// import React from 'react'
-// import hero_background_image from "../../assets/images/hero-background.jpg"
 
-// const Hero = () => {
-//   return (
-//     <div className=''>
-//         <div>
-            
-
-//         </div>
-//         <div>
-            
-//         </div>
-      
-//     </div>
-//   )
-// }
-
-// export default Hero
 
 import heroBackgroundImage from "../../assets/images/hero-background.jpg"
 import "./hero.scss"

@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import ChatApp from './ChatApp';
+import Hero from '../../components/hero/Hero';
 
 const Home = () => {
 
@@ -74,6 +75,8 @@ const [messages,setMessages]= useState();
       <button onClick={()=>fetchUsers('Student')}> All users</button>
       <br />
       <ChatApp /> */}
+
+      <Hero/>
     </div>
   )
 }

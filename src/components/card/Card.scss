@@ -23,19 +23,26 @@
     }
   
     &__title {
-      font-size: 18px;
+      font-size: 20px;
       font-weight: bold;
       margin-bottom: 8px;
     }
   
     &__description {
-      font-size: 14px;
+      font-size: 18px;
       color: #666;
       margin-bottom: 12px;
+      border:1px solid #ccc;
     }
     &__course{
-        font-size: 14px;
+        font-size: 15px;
         color: #666;
+        margin-bottom: 10px;
+      }
+      &__star{
+        font-size: 10px;
+        color: #7e7e7e;
+        gap: 10px;
         margin-bottom: 10px;
       }
     
@@ -44,9 +51,12 @@
       background: #579de8;
       color: white;
       border: none;
-      padding: 8px 16px;
+      font-size: 18px;
+      padding: 10px 24px;
       border-radius: 6px;
       cursor: pointer;
+      margin-top: 20px;
+      width: 100%;;
       transition: background 0.3s;
   
       &:hover {
