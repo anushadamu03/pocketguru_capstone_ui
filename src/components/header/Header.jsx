@@ -38,7 +38,7 @@ const Header = ({ setupdateLogin, updateLogin }) => {
 
                     {authToken ? (
                         <>
-                            <li onClick={handleLogout} style={{ cursor: 'pointer',color:"white" }}>Logout</li>
+                           
 
                             {userRole === 'Mentor' && (
                                 <li><Link to="/students">Students</Link></li>
@@ -49,6 +49,7 @@ const Header = ({ setupdateLogin, updateLogin }) => {
                             )}
 
                             <li><Link to="/user-dashboard">Dashboard</Link></li>
+                            <li onClick={handleLogout} style={{ cursor: 'pointer',color:"white" }}>Logout</li>
                         </>
                     ) : (
                         <>

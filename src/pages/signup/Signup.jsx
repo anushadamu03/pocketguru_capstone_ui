@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Eye, EyeOff, UserPlus } from "lucide-react";
-import "./Signup.css";
+import "./Signup.scss";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -107,7 +107,7 @@ const Signup = () => {
     }));
   };
 
-  // console.log("formData==",formData)
+  console.log("formData==",formData)
 
   return (
     <div className="signup-container">
@@ -157,7 +157,7 @@ const Signup = () => {
               value={formData.bio}
               onChange={handleChange}
               className={errors.bio ? "error" : ""}
-              placeholder="write bio"
+              placeholder="Write your bio"
             />
             {errors.bio && <p className="error-message">{errors.bio}</p>}
           </div>
@@ -217,28 +217,42 @@ const Signup = () => {
 
           <div className="form-group">
             <label htmlFor="email">Expertise</label>
-            <input
-              type="text"
-              id="expertise"
-              name="expertise"
-              value={formData.expertise}
+            <select name="expertise" id="expertise" value={formData.expertise}
               onChange={handleChange}
-              className={errors.expertise ? "error" : ""}
-              placeholder="write expertise"
-            />
+              className={errors.expertise ? "error" : ""} >
+                {
+                  [
+                    "Select your expertise",
+                    "Mern Stack",
+                    "Full Stack",
+                    "Python",
+                    "Java",
+                    "Node.js",
+                    "React",
+                    "Go",
+                    "C++",
+                    "TypeScript",
+                    "Devops",
+                    "SQL",
+                    "NoSQL",
+                    "AWS",
+                    "Cloud",
+                  ].map((value,i)=>{
+                    return(
+                      <option value={value} key={i}>{value}</option>
+                    )
+                  })
+                }
+             
+            </select>
+            {}
             {errors.expertise && (
               <p className="error-message">{errors.expertise}</p>
             )}
           </div>
           }
 
-          {/* <div className="terms-group">
-            <input type="checkbox" id="terms" />
-            <label htmlFor="terms">
-              I agree to the <a href="#">Terms of Service</a> and{" "}
-              <a href="#">Privacy Policy</a>
-            </label>
-          </div> */}
+         
 
           <button type="submit" className="submit-button">
             <UserPlus size={20} />

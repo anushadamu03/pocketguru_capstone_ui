@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from "react";
-// import "./ChatApp.css"; // Import the CSS file
 
 const ChatComponent = ({ messages, currentUserId }) => {
   const chatContainerRef = useRef(null);

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Chat.scss";
-import "./chat.css";
+import "./chat-responsive.scss";
 import { useLocation } from "react-router-dom";
 import { toast } from "react-toastify";
 
@@ -39,10 +39,6 @@ const ChatPage = () => {
       }
     },[authUserId, expert])
 
-  // const [messages, setMessages] = useState([
-  //   { sender: "Mentor", text: "Hello! How can I help you?", time: "10:00 AM" },
-  //   { sender: "Mentee", text: "I need guidance on React.", time: "10:01 AM" },
-  // ]);
   const [text_msg, setTextMsg] = useState("");
 
   const sendMessage = async () => {
@@ -77,30 +73,6 @@ const ChatPage = () => {
 
   console.log("messages======",messages)
 
-  // const sendMessage = () => {
-  //   if (!text.trim()) return;
-
-  //   const newMessage = {
-  //     sender: "Mentee",
-  //     text,
-  //     time: new Date().toLocaleTimeString(),
-  //   };
-
-  //   setMessages([...messages, newMessage]);
-
-  //   setTimeout(() => {
-  //     setMessages((prev) => [
-  //       ...prev,
-  //       {
-  //         sender: "Mentor",
-  //         text: "Sure, I can help!",
-  //         time: new Date().toLocaleTimeString(),
-  //       },
-  //     ]);
-  //   }, 1000);
-
-  //   setText("");
-  // };
 
   return (
     <div className="chating-box">
@@ -134,7 +106,7 @@ const ChatPage = () => {
                 <strong>{msg.sender}</strong>
                 <p>{msg.text}</p>
                 <span className="time">
-                  {/* {msg.createdAt} */}
+                  {}
                 {new Date(msg.createdAt).toLocaleTimeString()}
                 </span>
               </div>
@@ -148,8 +120,7 @@ const ChatPage = () => {
             value={text_msg}
             onChange={(e) => setTextMsg(e.target.value)}
           />
-          {/* <Camera size={25} />
-          <Image size={23} /> */}
+          {}
           <button onClick={sendMessage}>Send</button>
         </div>
       </div>

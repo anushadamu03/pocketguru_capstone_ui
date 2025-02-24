@@ -57,7 +57,7 @@ const UserDashboard = () => {
         <div className="profile-stats">
           <strong> {userData?.user?.bio}</strong>
         </div>
-        {/* <button className="show-more-btn">Show more</button> */}
+        {}
       </div>
     </div>
   );
@@ -65,4 +65,4 @@ const UserDashboard = () => {
 
 export default UserDashboard;
 
-/* UserProfile.scss */
+
