@@ -60,16 +60,6 @@ import { useNavigate } from "react-router-dom";
 const Students = () => {
   const navigate = useNavigate();
 
-  const [authUserId, setauthWebUserId] = useState('');
-  const getToken = () => {
-   const auth_webId = localStorage.getItem('web_userId');
-   setauthWebUserId(auth_webId)
- };
-
-  useEffect(()=>{
-       getToken();
-     },[])
-
        const [student_users, setUsers] = useState([]);
        const [filterText, setFilterText] = useState("");
 
@@ -81,13 +71,12 @@ const Students = () => {
               throw new Error('Failed to fetch users');
             }
             const data = await response.json();
-            const allStudentsData = data?.users?.filter(item => item.id !== authUserId);
-            setUsers(allStudentsData);
+            setUsers(data.users);
           } catch (error) {
             console.error('Error fetching users:', error.message);
           }
         };
-        
+
         const filteredStudents = student_users.filter((expert) =>
           expert.name.toLowerCase().includes(filterText.toLowerCase())
         );
@@ -95,7 +84,7 @@ const Students = () => {
 
         useEffect(()=>{
           fetchUsers('Student')
-        },[authUserId])
+        },[])
 
        
 

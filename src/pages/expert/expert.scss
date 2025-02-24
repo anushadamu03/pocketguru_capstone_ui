@@ -107,45 +107,7 @@
   }
 }
 
-// .filter-tags {
-//   display: flex;
-//    justify-content: end;
-//    align-items: flex-end;
-//   gap: 14px; 
-//   flex-wrap: wrap;
-  
-//   p {
-//     background-color: #007bff; // Green background
-//     color: #ffffff; 
-//     font-size: 14px;
-//     padding: 6px 12px;
-//     border-radius: 20px; 
-//     margin-bottom:10px;
 
-//     cursor: pointer;
-//     transition: all 0.3s ease;
-
-//     &:hover {
-//       background-color: #0056b3; 
-//     }
-//   }
-
-//   @media (max-width: 768px) {
-//     .filter-tags {
-//       display: flex;
-//        justify-content: start;
-//        align-items: start;
-//       gap: 10px; 
-//       flex-wrap: wrap;}
-    
-//   }
-// }
-
-.card-filtertags-container{
-  display: flex ;
-  justify-items: center;
-  gap: 70px;
-}
 
 
 .filter-tags {
@@ -157,11 +119,14 @@
    border-radius: 10px;
   border: 1px solid gray; padding: 10px;
 
+
+
   div {
     display: flex;
+    flex-direction: column;
     gap: 10px;
     justify-content: start;
-   
+    height: 100%;
 
     p {
       background-color: #007bff;
@@ -180,11 +145,12 @@
     }
   }
 
-  .card-filtertags-container{
-    display: flex;
-  }
+ 
 
-  // Responsive Design
+
+
+  
+
   @media (max-width: 768px) {
     div {
       justify-content: start; 
@@ -193,10 +159,77 @@
 
   @media (max-width: 480px) {
     div {
-      flex-direction: column; // Stack tags vertically on very small screens
+      flex-direction: row; 
       align-items: center;
+      flex-wrap: wrap;
+     
     }
+    .expert_card_container{
+      margin-left: 900px;
+    }
+
   }
 }
 
 
+.flex_card_filter{
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+
+.filter-tags {
+  // position: absolute;
+  z-index: 999;  /* Ensure it's above other elements */
+  pointer-events: auto; 
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+width: fit-content;
+}
+
+.expert_card_container{
+  width: 100%;
+}
+
+.card{
+  height: fit-content;
+}
+
+.card-filtertags-container p {
+  cursor: pointer;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  text-align: center;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: row;
+}
+
+
+@media (max-width: 991px) {
+  .flex_card_filter{
+flex-direction: column;
+  }
+  .filter-tags {
+width: 100%;
+  }
+
+  .filter-tags div {
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.card{
+  margin-bottom: 10px;
+}
+
+}
+@media (max-width: 400px) {
+.experts .filter-container .filter-button {
+  padding: 10px 8px;
+}
+}
